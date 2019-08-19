@@ -24,14 +24,11 @@ describe("Event store", () => {
       }
     });
 
-    console.log("ONE RESPONSE: ", response);
-
     expect(response.statusCode).to.equal(200);
     expect(response.body).to.deep.equal(JSON.stringify({}));
   });
   it("should return an error if incorrect params", async () => {
     const response = await get(`${rootAddress}/hydrate`, {});
-    console.log("TWO RESPONSE: ", response);
-    expect(response.statusCode).to.be.greaterThan(400);
+    expect(response.statusCode).to.be.at.least(400);
   });
 });
