@@ -8,7 +8,7 @@
     "_GCP_DNS_ZONE": "network",
     "_TYPE": "event-store",
     "_CORS_ALLOW_HEADERS": "Authorization Content-Type",
-    "_ESP_OPTIONS": "--cors_allow_methods=POST GET,--cors_allow_headers=Authorization Content-Type,--cors_allow_credentials"
+    "_ESP_OPTIONS": "--cors_preset=basic,--cors_allow_methods=POST GET,--cors_allow_headers=Authorization Content-Type,--cors_allow_credentials"
   },
   "steps": [
     {
