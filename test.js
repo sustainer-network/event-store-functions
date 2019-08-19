@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const { post } = require("@sustainer-network/request");
+const { post, get } = require("@sustainer-network/request");
 
 const rootAddress = "https://event-store.staging.sustainer.network/v1";
 describe("Event store", () => {
@@ -27,7 +27,7 @@ describe("Event store", () => {
     console.log("ONE RESPONSE: ", response);
 
     expect(response.statusCode).to.equal(200);
-    expect(response.body).to.deep.equal({});
+    expect(response.body).to.deep.equal(JSON.stringify({}));
   });
   it("should return an error if incorrect params", async () => {
     const response = await get(`${rootAddress}/hydrate`, {});
