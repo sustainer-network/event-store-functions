@@ -14,7 +14,8 @@ describe("Event store", () => {
           traceId: "a-trace-id",
           command: "a.command",
           commandInstanceId: "123",
-          commandIssuedTimestamp: "345"
+          commandIssuedTimestamp: 123,
+          createdTimestamp: 123
         },
         payload: {
           a: 1,
