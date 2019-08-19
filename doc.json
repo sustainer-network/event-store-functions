@@ -13,75 +13,89 @@
           {
             "schema": {
               "properties": {
-                "payload": {
-                  "description": "The payload of the event being added.",
-                  "type": "object",
-                  "properties": {}
+                "storeId": {
+                  "type": "string",
+                  "description": "The store in which the event will be saved."
                 },
-
-                "fact": {
+                "event": {
+                  "description": "The event to add",
                   "type": "object",
-                  "description": "Metadata describing the context of the event being added.",
                   "properties": {
-                    "root": {
-                      "description": "The unique value that shared by related events in this store. This is usually a UUID.",
-                      "type": "string"
+                    "payload": {
+                      "description": "The payload of the event being added.",
+                      "type": "object",
+                      "properties": {}
                     },
-                    "topic": {
-                      "description": "An enumerated value used to categorize this event.",
-                      "type": "string"
-                    },
-                    "version": {
-                      "description": "The payload schema version of the event for the given topic.",
-                      "type": "number"
-                    },
-                    "traceId": {
-                      "description": "A value passed from the original command issuer to relate subsequent events.",
-                      "type": "string"
-                    },
-                    "commandInstanceId": {
-                      "description": "An identifier of the originating command that resulted in this event being made.",
-                      "type": "string"
-                    },
-                    "command": {
-                      "description": "The name of the command that created this event.",
-                      "type": "string"
-                    },
-                    "commandIssuedTimestamp": {
-                      "description": "The timestamp when command that created this event was issued.",
-                      "type": "integer"
-                    },
-                    "createdTimestamp": {
-                      "description": "The timestamp when this event was created.",
-                      "type": "integer"
+
+                    "fact": {
+                      "type": "object",
+                      "description": "Metadata describing the context of the event being added.",
+                      "properties": {
+                        "root": {
+                          "description": "The unique value that shared by related events in this store. This is usually a UUID.",
+                          "type": "string"
+                        },
+                        "topic": {
+                          "description": "An enumerated value used to categorize this event.",
+                          "type": "string"
+                        },
+                        "version": {
+                          "description": "The payload schema version of the event for the given topic.",
+                          "type": "number"
+                        },
+                        "traceId": {
+                          "description": "A value passed from the original command issuer to relate subsequent events.",
+                          "type": "string"
+                        },
+                        "commandInstanceId": {
+                          "description": "An identifier of the originating command that resulted in this event being made.",
+                          "type": "string"
+                        },
+                        "command": {
+                          "description": "The name of the command that created this event.",
+                          "type": "string"
+                        },
+                        "commandIssuedTimestamp": {
+                          "description": "The timestamp when command that created this event was issued.",
+                          "type": "integer"
+                        },
+                        "createdTimestamp": {
+                          "description": "The timestamp when this event was created.",
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "root",
+                        "topic",
+                        "version",
+                        "commandInstanceId",
+                        "command",
+                        "commandIssuedTimestamp",
+                        "createdTimestamp"
+                      ]
                     }
                   },
-                  "required": [
-                    "root",
-                    "topic",
-                    "version",
-                    "commandInstanceId",
-                    "command",
-                    "commandIssuedTimestamp",
-                    "createdTimestamp"
-                  ]
+                  "required": ["payload", "fact"]
                 }
               },
-              "required": ["payload", "fact"],
+              "required": ["storeId", "event"],
               "example": {
-                "fact": {
-                  "root": "aUniqueId1234",
-                  "topic": "someTopic",
-                  "version": 0,
-                  "traceId": "someId",
-                  "commandInstanceId": "someOtherId",
-                  "command": "some.command",
-                  "commandIssuedTimestamp": 123,
-                  "createdTimestamp": 124
-                },
-                "payload": {
-                  "a": 1,
-                  "b": 2
+                "storeId": "some-store-id",
+                "event": {
+                  "fact": {
+                    "root": "aUniqueId1234",
+                    "topic": "someTopic",
+                    "version": 0,
+                    "traceId": "someId",
+                    "commandInstanceId": "someOtherId",
+                    "command": "some.command",
+                    "commandIssuedTimestamp": 123,
+                    "createdTimestamp": 124
+                  },
+                  "payload": {
+                    "a": 1,
+                    "b": 2
+                  }
                 }
               },
               "type": "object"
