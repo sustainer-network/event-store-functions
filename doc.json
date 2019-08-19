@@ -1,0 +1,201 @@
+{
+  "info": {
+    "title": "#_TITLE",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/add": {
+      "post": {
+        "summary": "Add an event to the store",
+        "description": "Add an event to the event store with the specified payload and fact.",
+        "security": [],
+        "parameters": [
+          {
+            "schema": {
+              "properties": {
+                "payload": {
+                  "description": "The payload of the event being added.",
+                  "type": "object",
+                  "required": []
+                },
+
+                "fact": {
+                  "type": "object",
+                  "description": "Metadata describing the context of the event being added.",
+                  "properties": {
+                    "root": {
+                      "description": "The unique value that shared by related events in this store. This is usually a UUID.",
+                      "type": "string"
+                    },
+                    "topic": {
+                      "description": "An enumerated value used to categorize this event.",
+                      "type": "string"
+                    },
+                    "version": {
+                      "description": "The payload schema version of the event for the given topic.",
+                      "type": "number"
+                    },
+                    "traceId": {
+                      "description": "A value passed from the original command issuer to relate subsequent events.",
+                      "type": "string"
+                    },
+                    "commandInstanceId": {
+                      "description": "An identifier of the originating command that resulted in this event being made.",
+                      "type": "string"
+                    },
+                    "command": {
+                      "description": "The name of the command that created this event.",
+                      "type": "string"
+                    },
+                    "commandIssuedTimestamp": {
+                      "description": "The timestamp when command that created this event was issued.",
+                      "type": "integer"
+                    },
+                    "createdTimestamp": {
+                      "description": "The timestamp when this event was created.",
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "root",
+                    "topic",
+                    "version",
+                    "commandInstanceId",
+                    "command",
+                    "commandIssuedTimestamp"
+                  ]
+                }
+              },
+              "required": ["payload", "fact"],
+              "example": {
+                "fact": {
+                  "root": "aUniqueId1234",
+                  "topic": "someTopic",
+                  "version": 0,
+                  "traceId": "someId",
+                  "commandInstanceId": "someOtherId",
+                  "command": "some.command",
+                  "commandIssuedTimestamp": 123,
+                  "createdTimestamp": 124
+                },
+                "payload": {
+                  "a": 1,
+                  "b": 2
+                }
+              },
+              "type": "object"
+            },
+            "name": "body",
+            "in": "body"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request wasn't formatted correctly."
+          },
+          "401": {
+            "description": "The request wasn't authorized."
+          },
+          "404": {
+            "description": "The function doesn't exist."
+          },
+          "405": {
+            "description": "The method on the requested services doesn't exist."
+          },
+          "409": {
+            "description": "A user specified value was not valid."
+          },
+          "500": {
+            "description": "The server errored unexpectedly. If you receive this error, report it to us immediately."
+          }
+        },
+        "deprecated": false,
+        "x-google-backend": {
+          "address": "https://us-central1-roof-6b388.cloudfunctions.net/#_ADD_NAME"
+        },
+        "operationId": "#_ADD_NAME"
+      }
+    },
+
+    "/hydrate": {
+      "get": {
+        "summary": "Compose an aggregate root",
+        "description": "Map reduces all events for the given root, making use of snapshots for caching.",
+        "security": [],
+        "parameters": [
+          {
+            "schema": {
+              "properties": {
+                "root": {
+                  "description": "The root to aggregate.",
+                  "type": "string"
+                }
+              },
+              "required": ["root"],
+              "example": {
+                "root": "someUniqueRoot123"
+              },
+              "type": "object"
+            },
+            "name": "body",
+            "in": "body"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request wasn't formatted correctly."
+          },
+          "401": {
+            "description": "The request wasn't authorized."
+          },
+          "404": {
+            "description": "The function doesn't exist."
+          },
+          "405": {
+            "description": "The method on the requested services doesn't exist."
+          },
+          "409": {
+            "description": "A user specified value was not valid."
+          },
+          "500": {
+            "description": "The server errored unexpectedly. If you receive this error, report it to us immediately."
+          }
+        },
+        "deprecated": false,
+        "x-google-backend": {
+          "address": "https://us-central1-roof-6b388.cloudfunctions.net/#_HYDRATE_NAME"
+        },
+        "operationId": "#_HYDRATE_NAME"
+      }
+    }
+  },
+  "schemes": ["https"],
+  "basePath": "/v1",
+  "swagger": "2.0",
+  "host": "#_HOST"
+}
