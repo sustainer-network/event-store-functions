@@ -16,8 +16,7 @@
                 "payload": {
                   "description": "The payload of the event being added.",
                   "type": "object",
-                  "properties": {},
-                  "required": []
+                  "properties": {}
                 },
 
                 "fact": {
