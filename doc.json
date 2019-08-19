@@ -144,21 +144,15 @@
         "security": [],
         "parameters": [
           {
-            "schema": {
-              "properties": {
-                "root": {
-                  "description": "The root to aggregate.",
-                  "type": "string"
-                }
-              },
-              "required": ["root"],
-              "example": {
-                "root": "someUniqueRoot123"
-              },
-              "type": "object"
-            },
-            "name": "body",
-            "in": "body"
+            "root": {
+              "name": "root",
+              "in": "query",
+              "description": "The root to aggregate.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
           }
         ],
         "consumes": ["application/json"],

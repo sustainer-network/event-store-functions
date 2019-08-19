@@ -7,7 +7,7 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "test": "mocha --recursive  --timeout 5000"
+    "test": "mocha --recursive --timeout 5000"
   },
   "devDependencies": {
     "@sustainer-network/request": "*",
