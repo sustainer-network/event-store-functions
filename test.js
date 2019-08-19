@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const { post } = require("@roof/request");
+const { post } = require("@sustainer-network/request");
 
 const rootAddress = "https://event-store.staging.sustainer.network/v1";
 describe("Event store", () => {
