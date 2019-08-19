@@ -16,6 +16,7 @@
                 "payload": {
                   "description": "The payload of the event being added.",
                   "type": "object",
+                  "properties": {},
                   "required": []
                 },
 
@@ -162,7 +163,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {}
                 }
               }
             }
