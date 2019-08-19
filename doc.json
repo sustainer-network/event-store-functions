@@ -131,7 +131,7 @@
         },
         "deprecated": false,
         "x-google-backend": {
-          "address": "https://${_GCP_REGION}-${_GCP_PROJECT}.cloudfunctions.net/#_ADD_NAME"
+          "address": "https://#_GCP_REGION-$#_GCP_PROJECT.cloudfunctions.net/#_ADD_NAME"
         },
         "operationId": "#_ADD_NAME"
       }
@@ -188,7 +188,7 @@
         },
         "deprecated": false,
         "x-google-backend": {
-          "address": "https://${_GCP_REGION}-${_GCP_PROJECT}.cloudfunctions.net/#_HYDRATE_NAME"
+          "address": "https://#_GCP_REGION-#_GCP_PROJECT.cloudfunctions.net/#_HYDRATE_NAME"
         },
         "operationId": "#_HYDRATE_NAME"
       }
