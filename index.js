@@ -11,7 +11,7 @@ exports.add = (req, res) => {
 
 exports.hydrate = (req, res) => {
   eventStoreHandler
-    .hydrate({ body: req.body, token: tokenFromReq(req) })
+    .hydrate({ query: req.query, token: tokenFromReq(req) })
     .then(aggregateRoot => res.send(aggregateRoot))
     .catch(e => res.send(e));
 };
