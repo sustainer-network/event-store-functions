@@ -1,8 +1,6 @@
 const eventStoreHandler = require("@sustainer-network/event-store-handler");
 const tokenFromReq = require("@sustainer-network/token-from-req");
 
-exports.hydrate = hydrate;
-
 exports.add = (req, res) => {
   eventStoreHandler
     .add({ body: req.body, token: tokenFromReq(req) })
