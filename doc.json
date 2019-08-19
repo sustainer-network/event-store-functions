@@ -108,7 +108,11 @@
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "A successful response."
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
           },
           "400": {
             "description": "The request wasn't formatted correctly."
@@ -144,22 +148,22 @@
         "security": [],
         "parameters": [
           {
-            "root": {
-              "name": "root",
-              "in": "query",
-              "description": "The root to aggregate.",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
+            "name": "root",
+            "in": "query",
+            "description": "The root to aggregate.",
+            "type": "string"
           }
         ],
         "consumes": ["application/json"],
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "A successful response."
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "description": "the aggregate of the root passed in.",
+              "properties": {}
+            }
           },
           "400": {
             "description": "The request wasn't formatted correctly."
