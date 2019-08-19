@@ -30,7 +30,7 @@ describe("Event store", () => {
     expect(response.body).to.equal({});
   });
   it("should return an error if incorrect params", async () => {
-    const response = await post(rootAddress, {});
+    const response = await post(`${rootAddress}/hydrate`, {});
     console.log("TWO RESPONSE: ", response);
     expect(response.statusCode).to.be.greaterThan(400);
   });
