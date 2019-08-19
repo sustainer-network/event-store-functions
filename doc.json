@@ -63,7 +63,8 @@
                     "version",
                     "commandInstanceId",
                     "command",
-                    "commandIssuedTimestamp"
+                    "commandIssuedTimestamp",
+                    "createdTimestamp"
                   ]
                 }
               },
@@ -94,15 +95,7 @@
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "A successful response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            }
+            "description": "A successful response."
           },
           "400": {
             "description": "The request wasn't formatted correctly."
@@ -125,7 +118,7 @@
         },
         "deprecated": false,
         "x-google-backend": {
-          "address": "https://us-central1-roof-6b388.cloudfunctions.net/#_ADD_NAME"
+          "address": "https://${_GCP_REGION}-${_GCP_PROJECT}.cloudfunctions.net/#_ADD_NAME"
         },
         "operationId": "#_ADD_NAME"
       }
@@ -159,15 +152,7 @@
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "A successful response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            }
+            "description": "A successful response."
           },
           "400": {
             "description": "The request wasn't formatted correctly."
@@ -190,7 +175,7 @@
         },
         "deprecated": false,
         "x-google-backend": {
-          "address": "https://us-central1-roof-6b388.cloudfunctions.net/#_HYDRATE_NAME"
+          "address": "https://${_GCP_REGION}-${_GCP_PROJECT}.cloudfunctions.net/#_HYDRATE_NAME"
         },
         "operationId": "#_HYDRATE_NAME"
       }
