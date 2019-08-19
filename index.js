@@ -6,12 +6,12 @@ exports.add = (req, res) => {
   eventStoreHandler
     .add({ body: req.body, token: tokenFromReq(req) })
     .then(() => res.send({}))
-    .catch(e => res.send(e));
+    .catch(e => res.status(e.statusCode).send(e));
 };
 
 exports.hydrate = (req, res) => {
   eventStoreHandler
     .hydrate({ query: req.query, token: tokenFromReq(req) })
     .then(aggregateRoot => res.send(aggregateRoot))
-    .catch(e => res.send(e));
+    .catch(e => res.status(e.statusCode).send(e));
 };
