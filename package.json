@@ -2,7 +2,8 @@
   "name": "@sustainer-network/event-store-functions",
   "version": "0.0.0",
   "dependencies": {
-    "@sustainer-network/event-store-handler": "*"
+    "@sustainer-network/event-store-handler": "*",
+    "@sustainer-network/token-from-req": "*"
   },
   "scripts": {
     "precommit": "lint-staged",
@@ -10,7 +11,6 @@
   },
   "devDependencies": {
     "@sustainer-network/request": "*",
-    "@sustainer-network/token-from-req": "*",
     "mocha": "^6.1.4",
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
