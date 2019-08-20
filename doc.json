@@ -157,6 +157,18 @@
             "in": "query",
             "description": "The root to aggregate.",
             "type": "string"
+          },
+          {
+            "name": "storeId",
+            "in": "query",
+            "description": "The id of the store where to look for the root.",
+            "type": "string"
+          },
+          {
+            "name": "service",
+            "in": "query",
+            "description": "The service that generated the event.",
+            "type": "string"
           }
         ],
         "consumes": ["application/json"],
