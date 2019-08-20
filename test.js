@@ -67,7 +67,7 @@ describe("Event store", () => {
       service,
       root
     });
-    expect(aggregate0).to.deep.equal(JSON.stringify(payload1));
+    expect(aggregate0).to.deep.equal(JSON.stringify({ a: "1", b: "1" }));
 
     await post(`${rootAddress}/add`, {
       storeId,
@@ -93,7 +93,7 @@ describe("Event store", () => {
       root
     });
     expect(JSON.parse(aggregate1)).to.deep.equal(
-      JSON.stringify({ a: 1, b: 2, c: 1 })
+      JSON.stringify({ a: "1", b: "2", c: "1" })
     );
   });
   it("should return an error if hydrate incorrect params", async () => {
