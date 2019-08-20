@@ -17,6 +17,10 @@
                   "type": "string",
                   "description": "The store in which the event will be saved."
                 },
+                "service": {
+                  "type": "string",
+                  "description": "The service that generated the event."
+                },
                 "event": {
                   "description": "The event to add",
                   "type": "object",
@@ -78,9 +82,10 @@
                   "required": ["payload", "fact"]
                 }
               },
-              "required": ["storeId", "event"],
+              "required": ["storeId", "service", "event"],
               "example": {
                 "storeId": "some-store-id",
+                "service": "some-service",
                 "event": {
                   "fact": {
                     "root": "aUniqueId1234",

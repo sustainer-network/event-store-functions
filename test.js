@@ -7,6 +7,7 @@ describe("Event store", () => {
   it("should return successfully from adding", async () => {
     const response = await post(`${rootAddress}/add`, {
       storeId: "some-staging-store-id",
+      service: "some-service",
       event: {
         fact: {
           root: uuid(),
@@ -35,6 +36,7 @@ describe("Event store", () => {
   it("should hydrate successfully", async () => {
     const root = uuid();
     const storeId = "some-store-id";
+    const service = "some-service";
     const payload1 = {
       a: 1,
       b: 1
@@ -45,6 +47,7 @@ describe("Event store", () => {
     };
     await post(`${rootAddress}/add`, {
       storeId,
+      service,
       event: {
         fact: {
           root,
@@ -59,12 +62,18 @@ describe("Event store", () => {
         payload: payload1
       }
     });
-    const aggregate0 = await get(`${rootAddress}/hydrate`, { storeId, root });
+    const aggregate0 = await get(`${rootAddress}/hydrate`, {
+      storeId,
+      service,
+      root
+    });
+    // eslint-disable-next-line no-console
     console.log("AGGREGATE 0: ", JSON.parse(aggregate0));
     expect(JSON.parse(aggregate0)).to.deep.equal(payload1);
 
     await post(`${rootAddress}/add`, {
       storeId,
+      service,
       event: {
         fact: {
           root,
@@ -80,7 +89,12 @@ describe("Event store", () => {
       }
     });
 
-    const aggregate1 = await get(`${rootAddress}/hydrate`, { storeId, root });
+    const aggregate1 = await get(`${rootAddress}/hydrate`, {
+      storeId,
+      service,
+      root
+    });
+    // eslint-disable-next-line no-console
     console.log("HYDRATED 1: ", JSON.parse(aggregate1));
     expect(JSON.parse(aggregate1)).to.deep.equal({ a: 1, b: 2, c: 1 });
   });
