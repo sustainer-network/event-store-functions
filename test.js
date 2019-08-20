@@ -81,7 +81,7 @@ describe("Event store", () => {
           command: "a.command",
           commandInstanceId: "123",
           commandIssuedTimestamp: 123,
-          createdTimestamp: 123
+          createdTimestamp: 124
         },
         payload: payload2
       }
