@@ -13,6 +13,14 @@ exports.hydrate = (req, res) => {
   console.log("DOING THE HYDRATING DANCE");
   eventStoreHandler
     .hydrate({ query: req.query, token: tokenFromReq(req) })
-    .then(aggregateRoot => res.send(aggregateRoot))
-    .catch(e => res.status(e.statusCode).send(e));
+    .then(aggregateRoot => {
+      // eslint-disable-next-line no-console
+      console.log("dooooon: ", aggregateRoot);
+      res.send(aggregateRoot);
+    })
+    .catch(e => {
+      // eslint-disable-next-line no-console
+      console.log("nooooo: ", e);
+      res.status(e.statusCode).send(e);
+    });
 };
