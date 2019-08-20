@@ -72,7 +72,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "sed -e 's/#_ADD_NAME/${_SERVICE}-staging-${_TYPE}-add/g; s/#_HYDRATE_NAME/${_SERVICE}-staging-${_TYPE}-aggregate/g; s/#_HOST/${_TYPE}.staging.${_SERVICE_DOMAIN}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/Staging ${_TITLE}/g' doc.json > doc.staging.json"
+        "sed -e 's/#_ADD_NAME/${_SERVICE}-staging-${_TYPE}-add/g; s/#_AGGREGATE_NAME/${_SERVICE}-staging-${_TYPE}-aggregate/g; s/#_HOST/${_TYPE}.staging.${_SERVICE_DOMAIN}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/Staging ${_TITLE}/g' doc.json > doc.staging.json"
       ]
     },
     {
@@ -178,7 +178,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "sed -e 's/#_ADD_NAME/${_SERVICE}-${_TYPE}-add/g; s/#_HYDRATE_NAME/${_SERVICE}-${_TYPE}-aggregate/g; s/#_HOST/${_TYPE}.${_SERVICE_DOMAIN}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/${_TITLE}/g' doc.json > doc.production.json"
+        "sed -e 's/#_ADD_NAME/${_SERVICE}-${_TYPE}-add/g; s/#_AGGREGATE_NAME/${_SERVICE}-${_TYPE}-aggregate/g; s/#_HOST/${_TYPE}.${_SERVICE_DOMAIN}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/${_TITLE}/g' doc.json > doc.production.json"
       ]
     },
     {

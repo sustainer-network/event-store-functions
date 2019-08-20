@@ -13,7 +13,7 @@
           {
             "schema": {
               "properties": {
-                "storeId": {
+                "store": {
                   "type": "string",
                   "description": "The store in which the event will be saved."
                 },
@@ -82,9 +82,9 @@
                   "required": ["payload", "fact"]
                 }
               },
-              "required": ["storeId", "service", "event"],
+              "required": ["store", "service", "event"],
               "example": {
-                "storeId": "some-store-id",
+                "store": "some-store-id",
                 "service": "some-service",
                 "event": {
                   "fact": {
@@ -159,7 +159,7 @@
             "type": "string"
           },
           {
-            "name": "storeId",
+            "name": "store",
             "in": "query",
             "description": "The id of the store where to look for the root.",
             "type": "string"
@@ -203,9 +203,9 @@
         },
         "deprecated": false,
         "x-google-backend": {
-          "address": "https://#_GCP_REGION-#_GCP_PROJECT.cloudfunctions.net/#_HYDRATE_NAME"
+          "address": "https://#_GCP_REGION-#_GCP_PROJECT.cloudfunctions.net/#_AGGREGATE_NAME"
         },
-        "operationId": "#_HYDRATE_NAME"
+        "operationId": "#_AGGREGATE_NAME"
       }
     }
   },

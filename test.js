@@ -6,7 +6,7 @@ const rootAddress = "https://event-store.staging.sustainer.network/v1";
 describe("Event store", () => {
   it("should return successfully from adding", async () => {
     const response = await post(`${rootAddress}/add`, {
-      storeId: "some-staging-store-id",
+      store: "some-staging-store-id",
       service: "some-service",
       event: {
         fact: {
@@ -35,7 +35,7 @@ describe("Event store", () => {
   });
   it("should get aggregates successfully", async () => {
     const root = uuid();
-    const storeId = "some-store-id";
+    const store = "some-store-id";
     const service = "some-service";
     const payload1 = {
       a: 1,
@@ -46,7 +46,7 @@ describe("Event store", () => {
       c: 1
     };
     await post(`${rootAddress}/add`, {
-      storeId,
+      store,
       service,
       event: {
         fact: {
@@ -63,14 +63,14 @@ describe("Event store", () => {
       }
     });
     const { body: aggregate0 } = await get(`${rootAddress}/aggregate`, {
-      storeId,
+      store,
       service,
       root
     });
     expect(aggregate0).to.deep.equal(JSON.stringify({ a: "1", b: "1" }));
 
     await post(`${rootAddress}/add`, {
-      storeId,
+      store,
       service,
       event: {
         fact: {
@@ -88,11 +88,11 @@ describe("Event store", () => {
     });
 
     const { body: aggregate1 } = await get(`${rootAddress}/aggregate`, {
-      storeId,
+      store,
       service,
       root
     });
-    expect(JSON.parse(aggregate1)).to.deep.equal(
+    expect(aggregate1).to.deep.equal(
       JSON.stringify({ a: "1", b: "2", c: "1" })
     );
   });
