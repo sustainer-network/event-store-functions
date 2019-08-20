@@ -9,18 +9,12 @@ exports.add = (req, res) => {
 };
 
 exports.hydrate = (req, res) => {
-  // eslint-disable-next-line no-console
-  console.log("DOING THE HYDRATING DANCE query: ", req.query);
   eventStoreHandler
     .hydrate({ query: req.query, token: tokenFromReq(req) })
     .then(aggregateRoot => {
-      // eslint-disable-next-line no-console
-      console.log("dooooon: ", aggregateRoot);
       res.send(aggregateRoot);
     })
     .catch(e => {
-      // eslint-disable-next-line no-console
-      console.log("nooooo: ", e);
       res.status(e.statusCode).send(e);
     });
 };

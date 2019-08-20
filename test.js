@@ -67,9 +67,7 @@ describe("Event store", () => {
       service,
       root
     });
-    // eslint-disable-next-line no-console
-    console.log("AGGREGATE 0: ", aggregate0);
-    expect(JSON.parse(aggregate0)).to.deep.equal(payload1);
+    expect(aggregate0).to.deep.equal(JSON.stringify(payload1));
 
     await post(`${rootAddress}/add`, {
       storeId,
@@ -94,9 +92,9 @@ describe("Event store", () => {
       service,
       root
     });
-    // eslint-disable-next-line no-console
-    console.log("HYDRATED 1: ", aggregate1);
-    expect(JSON.parse(aggregate1)).to.deep.equal({ a: 1, b: 2, c: 1 });
+    expect(JSON.parse(aggregate1)).to.deep.equal(
+      JSON.stringify({ a: 1, b: 2, c: 1 })
+    );
   });
   it("should return an error if hydrate incorrect params", async () => {
     const response = await get(`${rootAddress}/hydrate`, {});
