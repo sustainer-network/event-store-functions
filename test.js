@@ -68,7 +68,7 @@ describe("Event store", () => {
       root
     });
     // eslint-disable-next-line no-console
-    console.log("AGGREGATE 0: ", JSON.parse(aggregate0));
+    console.log("AGGREGATE 0: ", aggregate0);
     expect(JSON.parse(aggregate0)).to.deep.equal(payload1);
 
     await post(`${rootAddress}/add`, {
@@ -95,7 +95,7 @@ describe("Event store", () => {
       root
     });
     // eslint-disable-next-line no-console
-    console.log("HYDRATED 1: ", JSON.parse(aggregate1));
+    console.log("HYDRATED 1: ", aggregate1);
     expect(JSON.parse(aggregate1)).to.deep.equal({ a: 1, b: 2, c: 1 });
   });
   it("should return an error if hydrate incorrect params", async () => {
