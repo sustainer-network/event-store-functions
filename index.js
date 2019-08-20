@@ -9,6 +9,8 @@ exports.add = (req, res) => {
 };
 
 exports.hydrate = (req, res) => {
+  // eslint-disable-next-line no-console
+  console.log("DOING THE HYDRATING DANCE");
   eventStoreHandler
     .hydrate({ query: req.query, token: tokenFromReq(req) })
     .then(aggregateRoot => res.send(aggregateRoot))
