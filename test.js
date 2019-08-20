@@ -62,7 +62,7 @@ describe("Event store", () => {
         payload: payload1
       }
     });
-    const aggregate0 = await get(`${rootAddress}/hydrate`, {
+    const { body: aggregate0 } = await get(`${rootAddress}/hydrate`, {
       storeId,
       service,
       root
@@ -89,7 +89,7 @@ describe("Event store", () => {
       }
     });
 
-    const aggregate1 = await get(`${rootAddress}/hydrate`, {
+    const { body: aggregate1 } = await get(`${rootAddress}/hydrate`, {
       storeId,
       service,
       root
