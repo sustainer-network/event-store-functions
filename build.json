@@ -17,7 +17,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud functions deploy ${_SERVICE}-staging-${_TYPE}-add --trigger-http --memory=${__MEMORY} --runtime=nodejs10 --entry-point=add --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=NODE_ENV=staging,STORE_INSTANCE=staging-event-store"
+        "gcloud functions deploy ${_SERVICE}-staging-${_TYPE}-add --trigger-http --memory=${_MEMORY} --runtime=nodejs10 --entry-point=add --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=NODE_ENV=staging,STORE_INSTANCE=staging-event-store"
       ]
     },
     {
@@ -25,7 +25,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud functions deploy ${_SERVICE}-staging-${_TYPE}-aggregate --trigger-http --memory=${__MEMORY} --runtime=nodejs10 --entry-point=aggregate --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=NODE_ENV=staging,STORE_INSTANCE=staging-event-store"
+        "gcloud functions deploy ${_SERVICE}-staging-${_TYPE}-aggregate --trigger-http --memory=${_MEMORY} --runtime=nodejs10 --entry-point=aggregate --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=NODE_ENV=staging,STORE_INSTANCE=staging-event-store"
       ]
     },
     {
@@ -123,7 +123,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud functions deploy ${_SERVICE}-${_TYPE}-add --trigger-http --memory=${__MEMORY} --runtime=nodejs10 --entry-point=add --set-env-vars=NODE_ENV=production,STORE_INSTANCE=event-store"
+        "gcloud functions deploy ${_SERVICE}-${_TYPE}-add --trigger-http --memory=${_MEMORY} --runtime=nodejs10 --entry-point=add --set-env-vars=NODE_ENV=production,STORE_INSTANCE=event-store"
       ]
     },
     {
@@ -131,7 +131,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud functions deploy ${_SERVICE}-${_TYPE}-aggregate --trigger-http  --memory=${__MEMORY} --runtime=nodejs10 --entry-point=aggregate --set-env-vars=NODE_ENV=production,STORE_INSTANCE=event-store"
+        "gcloud functions deploy ${_SERVICE}-${_TYPE}-aggregate --trigger-http  --memory=${_MEMORY} --runtime=nodejs10 --entry-point=aggregate --set-env-vars=NODE_ENV=production,STORE_INSTANCE=event-store"
       ]
     },
     {

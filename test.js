@@ -3,11 +3,15 @@ const { post, get } = require("@sustainer-network/request");
 const uuid = require("@sustainer-network/uuid");
 
 const rootAddress = "https://event-store.staging.sustainer.network/v1";
+
+const store = "store";
+const service = "service";
+
 describe("Event store", () => {
   it("should return successfully from adding", async () => {
     const response = await post(`${rootAddress}/add`, {
-      store: "some-staging-store-id",
-      service: "some-service",
+      store,
+      service,
       event: {
         fact: {
           root: uuid(),
@@ -35,8 +39,6 @@ describe("Event store", () => {
   });
   it("should get aggregates successfully", async () => {
     const root = uuid();
-    const store = "some-store-id";
-    const service = "some-service";
     const payload1 = {
       a: 1,
       b: 1
