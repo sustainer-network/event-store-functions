@@ -8,7 +8,7 @@ exports.add = (req, res) => {
     .catch(e => res.status(e.statusCode).send(e));
 };
 
-exports.hydrate = (req, res) => {
+exports.aggregate = (req, res) => {
   eventStoreHandler
     .hydrate({ query: req.query, token: tokenFromReq(req) })
     .then(aggregateRoot => {

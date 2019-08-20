@@ -146,7 +146,7 @@
       }
     },
 
-    "/hydrate": {
+    "/aggregate": {
       "get": {
         "summary": "Compose an aggregate root",
         "description": "Map reduces all events for the given root, making use of snapshots for caching.",

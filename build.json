@@ -24,7 +24,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud functions deploy ${_SERVICE}-staging-${_TYPE}-hydrate --trigger-http --runtime=nodejs10 --entry-point=hydrate --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=NODE_ENV=staging,STORE_INSTANCE=staging-event-store"
+        "gcloud functions deploy ${_SERVICE}-staging-${_TYPE}-aggregate --trigger-http --runtime=nodejs10 --entry-point=aggregate --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=NODE_ENV=staging,STORE_INSTANCE=staging-event-store"
       ]
     },
     {
@@ -72,7 +72,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "sed -e 's/#_ADD_NAME/${_SERVICE}-staging-${_TYPE}-add/g; s/#_HYDRATE_NAME/${_SERVICE}-staging-${_TYPE}-hydrate/g; s/#_HOST/${_TYPE}.staging.${_SERVICE_DOMAIN}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/Staging ${_TITLE}/g' doc.json > doc.staging.json"
+        "sed -e 's/#_ADD_NAME/${_SERVICE}-staging-${_TYPE}-add/g; s/#_HYDRATE_NAME/${_SERVICE}-staging-${_TYPE}-aggregate/g; s/#_HOST/${_TYPE}.staging.${_SERVICE_DOMAIN}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/Staging ${_TITLE}/g' doc.json > doc.staging.json"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud beta functions add-iam-policy-binding ${_SERVICE}-staging-${_TYPE}-hydrate --member serviceAccount:31066734336-compute@developer.gserviceaccount.com --role roles/cloudfunctions.invoker"
+        "gcloud beta functions add-iam-policy-binding ${_SERVICE}-staging-${_TYPE}-aggregate --member serviceAccount:31066734336-compute@developer.gserviceaccount.com --role roles/cloudfunctions.invoker"
       ]
     },
     {
@@ -130,7 +130,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud functions deploy ${_SERVICE}-${_TYPE}-hydrate --trigger-http --runtime=nodejs10 --entry-point=hydrate --set-env-vars=NODE_ENV=production,STORE_INSTANCE=staging-event-store"
+        "gcloud functions deploy ${_SERVICE}-${_TYPE}-aggregate --trigger-http --runtime=nodejs10 --entry-point=aggregate --set-env-vars=NODE_ENV=production,STORE_INSTANCE=staging-event-store"
       ]
     },
     {
@@ -178,7 +178,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "sed -e 's/#_ADD_NAME/${_SERVICE}-${_TYPE}-add/g; s/#_HYDRATE_NAME/${_SERVICE}-${_TYPE}-hydrate/g; s/#_HOST/${_TYPE}.${_SERVICE_DOMAIN}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/${_TITLE}/g' doc.json > doc.production.json"
+        "sed -e 's/#_ADD_NAME/${_SERVICE}-${_TYPE}-add/g; s/#_HYDRATE_NAME/${_SERVICE}-${_TYPE}-aggregate/g; s/#_HOST/${_TYPE}.${_SERVICE_DOMAIN}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/${_TITLE}/g' doc.json > doc.production.json"
       ]
     },
     {
@@ -210,7 +210,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud beta functions add-iam-policy-binding ${_SERVICE}-${_TYPE}-hydrate --member serviceAccount:31066734336-compute@developer.gserviceaccount.com --role roles/cloudfunctions.invoker --project=${_GCP_PROJECT} --region=${_GCP_REGION}"
+        "gcloud beta functions add-iam-policy-binding ${_SERVICE}-${_TYPE}-aggregate --member serviceAccount:31066734336-compute@developer.gserviceaccount.com --role roles/cloudfunctions.invoker --project=${_GCP_PROJECT} --region=${_GCP_REGION}"
       ]
     }
   ]

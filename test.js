@@ -33,7 +33,7 @@ describe("Event store", () => {
     const response = await post(`${rootAddress}/add`, {});
     expect(response.statusCode).to.be.at.least(400);
   });
-  it("should hydrate successfully", async () => {
+  it("should get aggregates successfully", async () => {
     const root = uuid();
     const storeId = "some-store-id";
     const service = "some-service";
@@ -62,12 +62,12 @@ describe("Event store", () => {
         payload: payload1
       }
     });
-    const { body: aggregate0 } = await get(`${rootAddress}/hydrate`, {
+    const { body: aggregate0 } = await get(`${rootAddress}/aggregate`, {
       storeId,
       service,
       root
     });
-    expect(aggregate0).to.deep.equal({ a: "1", b: "1" });
+    expect(aggregate0).to.deep.equal(JSON.stringify({ a: "1", b: "1" }));
 
     await post(`${rootAddress}/add`, {
       storeId,
@@ -87,15 +87,17 @@ describe("Event store", () => {
       }
     });
 
-    const { body: aggregate1 } = await get(`${rootAddress}/hydrate`, {
+    const { body: aggregate1 } = await get(`${rootAddress}/aggregate`, {
       storeId,
       service,
       root
     });
-    expect(JSON.parse(aggregate1)).to.deep.equal({ a: "1", b: "2", c: "1" });
+    expect(JSON.parse(aggregate1)).to.deep.equal(
+      JSON.stringify({ a: "1", b: "2", c: "1" })
+    );
   });
-  it("should return an error if hydrate incorrect params", async () => {
-    const response = await get(`${rootAddress}/hydrate`, {});
+  it("should return an error if aggregate has incorrect query params", async () => {
+    const response = await get(`${rootAddress}/aggregate`, {});
     expect(response.statusCode).to.be.at.least(400);
   });
 });

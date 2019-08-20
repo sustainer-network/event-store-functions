@@ -1,1 +1,1 @@
-Add events to the event store, and hydrate aggregate roots.
+Add events to the event store, and get hydrated aggregate roots.
