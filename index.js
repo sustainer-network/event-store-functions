@@ -10,8 +10,6 @@ exports.add = (req, res) => {
 
 exports.hydrate = (req, res) => {
   // eslint-disable-next-line no-console
-  console.log("BIG REQ: ", req);
-  // eslint-disable-next-line no-console
   console.log("DOING THE HYDRATING DANCE body: ", req.body);
   // eslint-disable-next-line no-console
   console.log("DOING THE HYDRATING DANCE params: ", req.params);
