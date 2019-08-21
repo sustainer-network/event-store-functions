@@ -65,6 +65,14 @@
       "entrypoint": "bash",
       "args": [
         "-c",
+        "gcloud beta dns record-sets transaction abort --zone=${_GCP_DNS_ZONE} --project=${_GCP_PROJECT} || exit 0"
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/gcloud",
+      "entrypoint": "bash",
+      "args": [
+        "-c",
         "gcloud beta run domain-mappings create --platform=managed --service=${_SERVICE}-staging-${_TYPE} --domain=${_TYPE}.staging.${_SERVICE_DOMAIN} --project=${_GCP_PROJECT} --region=${_GCP_REGION} || exit 0"
       ]
     },
@@ -164,6 +172,14 @@
       "args": [
         "-c",
         "gcloud beta dns record-sets transaction execute --zone=${_GCP_DNS_ZONE} --project=${_GCP_PROJECT} || exit 0"
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/gcloud",
+      "entrypoint": "bash",
+      "args": [
+        "-c",
+        "gcloud beta dns record-sets transaction abort --zone=${_GCP_DNS_ZONE} --project=${_GCP_PROJECT} || exit 0"
       ]
     },
     {
