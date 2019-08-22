@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "@sustainer-network/event-store-service": "*",
-    "@sustainer-network/token-from-req": "*"
+    "@sustainer-network/tokens-from-req": "*"
   },
   "scripts": {
     "precommit": "lint-staged",
@@ -26,6 +26,7 @@
     "*.js": [
       "eslint --fix",
       "prettier-eslint --write",
+      "yarn checkbuild",
       "git add"
     ],
     "*.json": [
