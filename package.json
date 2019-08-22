@@ -26,7 +26,6 @@
     "*.js": [
       "eslint --fix",
       "prettier-eslint --write",
-      "yarn checkbuild",
       "git add"
     ],
     "*.json": [
