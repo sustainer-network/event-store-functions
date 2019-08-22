@@ -4,18 +4,20 @@ const uuid = require("@sustainer-network/uuid");
 
 const rootAddress = "https://event-store.staging.sustainer.network/v1";
 
-const store = "store";
-const service = "service";
+const domain = "domain";
+const _service = "the-service-which-stores-this-event";
+const service = "the-service-from-which-this-event-originated";
 
 describe("Event store", () => {
   it("should return successfully from adding", async () => {
     const response = await post(`${rootAddress}/add`, {
-      store,
-      service,
+      domain,
+      service: _service,
       event: {
         fact: {
           root: uuid(),
           topic: "some-topic",
+          service,
           version: 0,
           traceId: "a-trace-id",
           command: "a.command",
@@ -48,12 +50,13 @@ describe("Event store", () => {
       c: 1
     };
     await post(`${rootAddress}/add`, {
-      store,
-      service,
+      domain,
+      service: _service,
       event: {
         fact: {
           root,
           topic: "some-topic",
+          service,
           version: 0,
           traceId: "a-trace-id",
           command: "a.command",
@@ -65,19 +68,20 @@ describe("Event store", () => {
       }
     });
     const { body: aggregate0 } = await get(`${rootAddress}/aggregate`, {
-      store,
-      service,
+      domain,
+      service: _service,
       root
     });
     expect(aggregate0).to.deep.equal(JSON.stringify({ a: "1", b: "1" }));
 
     await post(`${rootAddress}/add`, {
-      store,
-      service,
+      domain,
+      service: _service,
       event: {
         fact: {
           root,
           topic: "some-topic",
+          service,
           version: 0,
           traceId: "a-trace-id",
           command: "a.command",
@@ -90,8 +94,8 @@ describe("Event store", () => {
     });
 
     const { body: aggregate1 } = await get(`${rootAddress}/aggregate`, {
-      store,
-      service,
+      domain,
+      service: _service,
       root
     });
     expect(aggregate1).to.deep.equal(
@@ -100,8 +104,8 @@ describe("Event store", () => {
   });
   it("should get aggregates successfully when two events with the same timestamp are inserted", async () => {
     const root = uuid();
-    const store = "some-store-id";
-    const service = "some-service";
+    const domain = "some-domani";
+
     const payload1 = {
       a: 1,
       b: 1
@@ -111,12 +115,13 @@ describe("Event store", () => {
       c: 1
     };
     await post(`${rootAddress}/add`, {
-      store,
-      service,
+      domain,
+      service: _service,
       event: {
         fact: {
           root,
           topic: "some-topic",
+          service,
           version: 0,
           traceId: "a-trace-id",
           command: "a.command",
@@ -128,19 +133,20 @@ describe("Event store", () => {
       }
     });
     const { body: aggregate0 } = await get(`${rootAddress}/aggregate`, {
-      store,
-      service,
+      domain,
+      service: _service,
       root
     });
     expect(aggregate0).to.deep.equal(JSON.stringify({ a: "1", b: "1" }));
 
     await post(`${rootAddress}/add`, {
-      store,
-      service,
+      domain,
+      service: _service,
       event: {
         fact: {
           root,
           topic: "some-topic",
+          service,
           version: 0,
           traceId: "a-trace-id",
           command: "a.command",
@@ -153,8 +159,8 @@ describe("Event store", () => {
     });
 
     const { body: aggregate1 } = await get(`${rootAddress}/aggregate`, {
-      store,
-      service,
+      domain,
+      service: _service,
       root
     });
     expect(aggregate1).to.deep.equal(JSON.stringify({ b: "2", c: "1" }));
