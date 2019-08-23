@@ -2,7 +2,8 @@
   "name": "@sustainer-network/event-store-functions",
   "version": "0.0.0",
   "dependencies": {
-    "@sustainer-network/event-store-service": "*",
+    "@sustainer-network/event-store-add-service": "*",
+    "@sustainer-network/event-store-hydrate-service": "*",
     "@sustainer-network/tokens-from-req": "*"
   },
   "scripts": {
