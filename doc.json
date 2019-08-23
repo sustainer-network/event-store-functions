@@ -51,30 +51,49 @@
                           "description": "A value passed from the original command issuer to relate subsequent events.",
                           "type": "string"
                         },
-                        "commandInstanceId": {
-                          "description": "An identifier of the originating command that resulted in this event being made.",
-                          "type": "string"
-                        },
-                        "command": {
-                          "description": "The name of the command that created this event.",
-                          "type": "string"
-                        },
-                        "commandIssuedTimestamp": {
-                          "description": "The timestamp when command that created this event was issued.",
-                          "type": "integer"
-                        },
                         "createdTimestamp": {
                           "description": "The timestamp when this event was created.",
                           "type": "integer"
+                        },
+                        "command": {
+                          "type": "object",
+                          "description": "Details about the command that created this event.",
+                          "properties": {
+                            "id": {
+                              "description": "An identifier of the originating command that resulted in this event being made.",
+                              "type": "string"
+                            },
+                            "action": {
+                              "description": "The action of the command that created this event.",
+                              "type": "string"
+                            },
+                            "domain": {
+                              "description": "The domain of the command that created this event.",
+                              "type": "string"
+                            },
+                            "service": {
+                              "description": "The service of the command that created this event.",
+                              "type": "string"
+                            },
+                            "issuedTimestamp": {
+                              "description": "The timestamp when command that created this event was issued.",
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "action",
+                            "domain",
+                            "service",
+                            "issuedTimestamp"
+                          ]
                         }
                       },
                       "required": [
                         "root",
                         "topic",
                         "version",
-                        "commandInstanceId",
                         "command",
-                        "commandIssuedTimestamp",
                         "createdTimestamp"
                       ]
                     }
@@ -92,10 +111,14 @@
                     "topic": "someTopic",
                     "version": 0,
                     "traceId": "someId",
-                    "commandInstanceId": "someOtherId",
-                    "command": "some.command",
-                    "commandIssuedTimestamp": 123,
-                    "createdTimestamp": 124
+                    "createdTimestamp": 124,
+                    "command": {
+                      "instanceId": "someOtherId",
+                      "action": "some-action",
+                      "domain": "somain-domain",
+                      "service": "some-service",
+                      "issuedTimestamp": 123
+                    }
                   },
                   "payload": {
                     "a": 1,
