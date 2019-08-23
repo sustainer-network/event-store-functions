@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const { post, get } = require("@sustainer-network/request");
 const uuid = require("@sustainer-network/uuid");
 
-const rootAddress = "https://event-store.staging.sustainer.network/v1";
+const rootAddress = "https://event-store.core.staging.sustainer.network/v1";
 
 const domain = "domain";
 const _service = "the-service-which-stores-this-event";
