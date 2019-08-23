@@ -16,7 +16,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud functions deploy staging-${_SERVICE}-${_TYPE}-add --trigger-http --memory=${_MEMORY} --runtime=nodejs10 --source=./add/index.js --entry-point=add --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=NODE_ENV=staging,STORE_INSTANCE=staging-event-store"
+        "gcloud functions deploy staging-${_SERVICE}-${_TYPE}-add --trigger-http --memory=${_MEMORY} --runtime=nodejs10 --source=add --entry-point=add --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=NODE_ENV=staging,STORE_INSTANCE=staging-event-store"
       ]
     },
     {
@@ -24,7 +24,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud functions deploy staging-${_SERVICE}-${_TYPE}-aggregate --trigger-http --memory=${_MEMORY} --runtime=nodejs10 --source=./aggregate/index.js --entry-point=aggregate --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=NODE_ENV=staging,STORE_INSTANCE=staging-event-store"
+        "gcloud functions deploy staging-${_SERVICE}-${_TYPE}-aggregate --trigger-http --memory=${_MEMORY} --runtime=nodejs10 --source=aggregate --entry-point=aggregate --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=NODE_ENV=staging,STORE_INSTANCE=staging-event-store"
       ]
     },
     {
@@ -130,7 +130,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud functions deploy ${_SERVICE}-${_TYPE}-add --trigger-http --memory=${_MEMORY} --runtime=nodejs10 --source=./add/index.js --entry-point=add --set-env-vars=NODE_ENV=production,STORE_INSTANCE=event-store"
+        "gcloud functions deploy ${_SERVICE}-${_TYPE}-add --trigger-http --memory=${_MEMORY} --runtime=nodejs10 --source=add --entry-point=add --set-env-vars=NODE_ENV=production,STORE_INSTANCE=event-store"
       ]
     },
     {
