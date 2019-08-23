@@ -20,9 +20,13 @@ describe("Event store", () => {
           service,
           version: 0,
           traceId: "a-trace-id",
-          command: "a.command",
-          commandInstanceId: "123",
-          commandIssuedTimestamp: 123,
+          command: {
+            id: "123",
+            action: "some-action",
+            domain,
+            service: _service,
+            issuedTimestamp: 123
+          },
           createdTimestamp: 123
         },
         payload: {
@@ -59,9 +63,13 @@ describe("Event store", () => {
           service,
           version: 0,
           traceId: "a-trace-id",
-          command: "a.command",
-          commandInstanceId: "123",
-          commandIssuedTimestamp: 123,
+          command: {
+            id: "123",
+            action: "some-action",
+            domain,
+            service: _service,
+            issuedTimestamp: 123
+          },
           createdTimestamp: 123
         },
         payload: payload1
@@ -84,9 +92,13 @@ describe("Event store", () => {
           service,
           version: 0,
           traceId: "a-trace-id",
-          command: "a.command",
-          commandInstanceId: "123",
-          commandIssuedTimestamp: 123,
+          command: {
+            id: "123",
+            action: "some-action",
+            domain,
+            service: _service,
+            issuedTimestamp: 123
+          },
           createdTimestamp: 124
         },
         payload: payload2
@@ -124,9 +136,13 @@ describe("Event store", () => {
           service,
           version: 0,
           traceId: "a-trace-id",
-          command: "a.command",
-          commandInstanceId: "123",
-          commandIssuedTimestamp: 123,
+          command: {
+            id: "123",
+            action: "some-action",
+            domain,
+            service: _service,
+            issuedTimestamp: 123
+          },
           createdTimestamp: 123
         },
         payload: payload1
@@ -149,9 +165,13 @@ describe("Event store", () => {
           service,
           version: 0,
           traceId: "a-trace-id",
-          command: "a.command",
-          commandInstanceId: "123",
-          commandIssuedTimestamp: 123,
+          command: {
+            id: "123",
+            action: "some-action",
+            domain,
+            service: _service,
+            issuedTimestamp: 123
+          },
           createdTimestamp: 123
         },
         payload: payload2
