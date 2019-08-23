@@ -119,7 +119,7 @@ describe("Event store", () => {
     const domain = "some-domani";
 
     const payload1 = {
-      a: 1,
+      a: 2,
       b: 1
     };
     const payload2 = {
