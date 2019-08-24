@@ -6,7 +6,7 @@ exports.add = (req, res) => {
     .then(() => res.send({}))
     .catch(e => {
       //eslint-disable-next-line no-console
-      console.log("EEE: ", e);
+      console.log("EEE: ", { e, stack: e.stack });
       res.status(e.statusCode).send(e);
     });
 };
