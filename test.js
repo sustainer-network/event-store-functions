@@ -36,9 +36,6 @@ describe("Event store", () => {
       }
     });
 
-    //eslint-disable-next-line no-console
-    console.log("RESP: ", response);
-
     expect(response.statusCode).to.equal(200);
     expect(response.body).to.deep.equal(JSON.stringify({}));
   });

@@ -3,10 +3,6 @@ const tokensFromReq = require("@sustainer-network/tokens-from-req");
 
 exports.aggregate = (req, res) => {
   hydrate({ params: req.query, token: tokensFromReq(req) })
-    .then(aggregateRoot => {
-      res.send(aggregateRoot);
-    })
-    .catch(e => {
-      res.status(e.statusCode).send(e);
-    });
+    .then(aggregateRoot => res.send(aggregateRoot))
+    .catch(e => res.status(e.statusCode).send(e));
 };
