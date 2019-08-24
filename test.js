@@ -16,7 +16,7 @@ describe("Event store", () => {
       event: {
         fact: {
           root: uuid(),
-          topic: "some-topic",
+          topic: "did-create.auth-token.staging.core",
           service,
           version: 0,
           traceId: "a-trace-id",
@@ -62,7 +62,7 @@ describe("Event store", () => {
       event: {
         fact: {
           root,
-          topic: "some-topic",
+          topic: "did-create.auth-token.staging.core",
           service,
           version: 0,
           traceId: "a-trace-id",
@@ -91,7 +91,7 @@ describe("Event store", () => {
       event: {
         fact: {
           root,
-          topic: "some-topic",
+          topic: "did-create.auth-token.staging.core",
           service,
           version: 0,
           traceId: "a-trace-id",
@@ -135,7 +135,7 @@ describe("Event store", () => {
       event: {
         fact: {
           root,
-          topic: "some-topic",
+          topic: "did-create.auth-token.staging.core",
           service,
           version: 0,
           traceId: "a-trace-id",
@@ -164,7 +164,7 @@ describe("Event store", () => {
       event: {
         fact: {
           root,
-          topic: "some-topic",
+          topic: "did-create.auth-token.staging.core",
           service,
           version: 0,
           traceId: "a-trace-id",
