@@ -116,6 +116,14 @@
       ]
     },
     {
+      "name": "gcr.io/cloud-builders/gcloud",
+      "entrypoint": "bash",
+      "args": [
+        "-c",
+        "gcloud pubsub topics create did-nothing.${_SERVICE}.staging --project=${_GCP_PROJECT} || exit 0"
+      ]
+    },
+    {
       "name": "node:10.16.0",
       "entrypoint": "yarn",
       "args": ["install"]
