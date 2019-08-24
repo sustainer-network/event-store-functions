@@ -18,13 +18,8 @@
     },
     {
       "name": "node:10.16.0",
-      "entrypoint": "bash",
-      "args": ["-c", "cd add && yarn test"]
-    },
-    {
-      "name": "node:10.16.0",
-      "entrypoint": "bash",
-      "args": ["-c", "cd aggregate && yarn test"]
+      "entrypoint": "yarn",
+      "args": ["test"]
     },
     {
       "name": "gcr.io/cloud-builders/gcloud",
