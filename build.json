@@ -146,7 +146,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud functions deploy ${_SERVICE}-${_TYPE}-aggregate --trigger-http  --memory=${_MEMORY} --runtime=nodejs10 --source=./aggregate/index.js --entry-point=aggregate --set-env-vars=NODE_ENV=production,STORE_INSTANCE=event-store"
+        "gcloud functions deploy ${_SERVICE}-${_TYPE}-aggregate --trigger-http  --memory=${_MEMORY} --runtime=nodejs10 --source=aggregate --entry-point=aggregate --set-env-vars=NODE_ENV=production,STORE_INSTANCE=event-store"
       ]
     },
     {
