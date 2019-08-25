@@ -49,7 +49,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud beta dns record-sets transaction add ghs.googlehosted.com. --name=${_TYPE}.${_SERVICE}.staging.{_NETWORK} --zone=${_GCP_DNS_ZONE} --type=CNAME --ttl=300 --project=${_GCP_PROJECT}"
+        "gcloud beta dns record-sets transaction add ghs.googlehosted.com. --name=${_TYPE}.${_SERVICE}.staging.${_NETWORK} --zone=${_GCP_DNS_ZONE} --type=CNAME --ttl=300 --project=${_GCP_PROJECT}"
       ]
     },
     {
@@ -73,7 +73,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud beta run domain-mappings create --platform=managed --service=staging-${_SERVICE}-${_TYPE} --domain=${_TYPE}.${_SERVICE}.staging.{_NETWORK} --project=${_GCP_PROJECT} --region=${_GCP_REGION} || exit 0"
+        "gcloud beta run domain-mappings create --platform=managed --service=staging-${_SERVICE}-${_TYPE} --domain=${_TYPE}.${_SERVICE}.staging.${_NETWORK} --project=${_GCP_PROJECT} --region=${_GCP_REGION} || exit 0"
       ]
     },
     {
@@ -81,7 +81,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "sed -e 's/#_ADD_NAME/staging-${_SERVICE}-${_TYPE}-add/g; s/#_AGGREGATE_NAME/staging-${_SERVICE}-${_TYPE}-aggregate/g; s/#_HOST/${_TYPE}.${_SERVICE}.staging.{_NETWORK}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/Staging ${_TITLE}/g' doc.json > doc.staging.json"
+        "sed -e 's/#_ADD_NAME/staging-${_SERVICE}-${_TYPE}-add/g; s/#_AGGREGATE_NAME/staging-${_SERVICE}-${_TYPE}-aggregate/g; s/#_HOST/${_TYPE}.${_SERVICE}.staging.${_NETWORK}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/Staging ${_TITLE}/g' doc.json > doc.staging.json"
       ]
     },
     {
@@ -97,7 +97,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud beta run services update staging-${_SERVICE}-${_TYPE} --platform=managed --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=\"^|^ENDPOINTS_SERVICE_NAME=${_TYPE}.${_SERVICE}.staging.{_NETWORK}|ESP_ARGS=--rollout_strategy=managed,${_ESP_OPTIONS}\""
+        "gcloud beta run services update staging-${_SERVICE}-${_TYPE} --platform=managed --project=${_GCP_PROJECT} --region=${_GCP_REGION} --set-env-vars=\"^|^ENDPOINTS_SERVICE_NAME=${_TYPE}.${_SERVICE}.staging.${_NETWORK}|ESP_ARGS=--rollout_strategy=managed,${_ESP_OPTIONS}\""
       ]
     },
     {
@@ -171,7 +171,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud beta dns record-sets transaction add ghs.googlehosted.com. --name=${_TYPE}.${_SERVICE}.{_NETWORK} --zone=${_GCP_DNS_ZONE} --type=CNAME --ttl=300 --project=${_GCP_PROJECT}"
+        "gcloud beta dns record-sets transaction add ghs.googlehosted.com. --name=${_TYPE}.${_SERVICE}.${_NETWORK} --zone=${_GCP_DNS_ZONE} --type=CNAME --ttl=300 --project=${_GCP_PROJECT}"
       ]
     },
     {
@@ -195,7 +195,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud beta run domain-mappings create --platform=managed --service=${_SERVICE}-${_TYPE} --domain=${_TYPE}.${_SERVICE}.{_NETWORK} --project=${_GCP_PROJECT} --region=${_GCP_REGION} || exit 0"
+        "gcloud beta run domain-mappings create --platform=managed --service=${_SERVICE}-${_TYPE} --domain=${_TYPE}.${_SERVICE}.${_NETWORK} --project=${_GCP_PROJECT} --region=${_GCP_REGION} || exit 0"
       ]
     },
     {
@@ -203,7 +203,7 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "sed -e 's/#_ADD_NAME/${_SERVICE}-${_TYPE}-add/g; s/#_AGGREGATE_NAME/${_SERVICE}-${_TYPE}-aggregate/g; s/#_HOST/${_TYPE}.${_SERVICE}.{_NETWORK}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/${_TITLE}/g' doc.json > doc.production.json"
+        "sed -e 's/#_ADD_NAME/${_SERVICE}-${_TYPE}-add/g; s/#_AGGREGATE_NAME/${_SERVICE}-${_TYPE}-aggregate/g; s/#_HOST/${_TYPE}.${_SERVICE}.${_NETWORK}/g; s/#_GCP_PROJECT/${_GCP_PROJECT}/g; s/#_GCP_REGION/${_GCP_REGION}/g; s/#_TITLE/${_TITLE}/g' doc.json > doc.production.json"
       ]
     },
     {
